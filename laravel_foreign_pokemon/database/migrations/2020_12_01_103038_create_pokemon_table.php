@@ -15,6 +15,11 @@ class CreatePokemonTable extends Migration
     {
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id();
+            $table->string('nom', 30);
+            $table->string('src');
+            $table->integer('niveau');
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
             $table->timestamps();
         });
     }
